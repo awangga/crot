@@ -1,7 +1,7 @@
 
 import cv2
 import numpy as np
-
+import os
 
 
 class Crot(object):
@@ -71,6 +71,8 @@ class Crot(object):
             theobjects.append(label)
         #cv2.imshow("object detection", image)
         #cv2.waitKey()
+        if not os.path.exists("outputs"):
+            os.makedirs("outputs")
         cv2.imwrite("outputs/crot_"+self.fimage.split('/')[1], image)
         cv2.destroyAllWindows()
         return theobjects
