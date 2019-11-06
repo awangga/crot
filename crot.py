@@ -18,14 +18,14 @@ class Crot(object):
         output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
         return output_layers
 
-
     def draw_prediction(self,img, classes, class_id, confidence, COLORS,x, y, x_plus_w, y_plus_h):
         label = str(classes[class_id])
         color = COLORS[class_id]
         cv2.rectangle(img, (x,y), (x_plus_w,y_plus_h), color, 2)
         cv2.putText(img, label, (x-10,y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+        return label
     
-    def getCount(self):
+    def getObjects(self):
         image = cv2.imread(self.fimage)
         Width = image.shape[1]
         Height = image.shape[0]
@@ -59,7 +59,7 @@ class Crot(object):
                     confidences.append(float(confidence))
                     boxes.append([x, y, w, h])
         indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, nms_threshold)
-        objek=0
+        theobjects = []
         for i in indices:
             i = i[0]
             box = boxes[i]
@@ -67,13 +67,13 @@ class Crot(object):
             y = box[1]
             w = box[2]
             h = box[3]
-            self.draw_prediction(image, classes,class_ids[i], confidences[i], COLORS, round(x), round(y), round(x+w), round(y+h))
-            objek=objek+1
+            label=self.draw_prediction(image, classes,class_ids[i], confidences[i], COLORS, round(x), round(y), round(x+w), round(y+h))
+            theobjects.append(label)
         #cv2.imshow("object detection", image)
         #cv2.waitKey()
         cv2.imwrite("outputs/crot_"+self.fimage.split('/')[1], image)
         cv2.destroyAllWindows()
-        return objek
+        return theobjects
 
 
 

@@ -2,5 +2,13 @@ import crot
 
 
 ngok=crot.Crot()
-ngok.setInput('inputs/Parking-Lot.jpg')
-print('Jumlah Objek Adalah : '+str(ngok.getCount()))
+
+
+for i in range(9):
+    fimage='inputs/'+str(i+1)+'.jpeg'
+    print(fimage)
+    ngok.setInput(fimage)
+    anu=ngok.getObjects()
+    print('Jumlah Objek Adalah : '+str(len(anu)))
+    print(anu)
+
