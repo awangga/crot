@@ -1,5 +1,6 @@
 # crot
-Convolution based Object Recognition Detection 
+Convolution based Object Recognition Detection. 
+
 How to use :
 
 ```py
