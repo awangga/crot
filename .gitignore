@@ -3,6 +3,7 @@
 *.weights
 *.txt
 *.jpg
+*.jpeg
 
 	
 # Byte-compiled / optimized / DLL files

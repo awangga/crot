@@ -9,10 +9,10 @@ import cv2
 import numpy as np
 
 
-fimage="park1.jpg"
-config="yolov3.cfg"
-weights="yolov3.weights"
-cvclasses="yolov3.txt"
+fimage="inputs/Parking-Lot.jpg"
+config="config/yolov3.cfg"
+weights="weights/yolov3.weights"
+cvclasses="classes/yolov3.txt"
 
 def get_output_layers(net):
     layer_names = net.getLayerNames()
@@ -33,8 +33,6 @@ Width = image.shape[1]
 Height = image.shape[0]
 scale = 0.00392
 classes = None
-
-# In[:
 
 with open(cvclasses, 'r') as f:
     classes = [line.strip() for line in f.readlines()]
@@ -93,7 +91,7 @@ print('Jumlah Objek Adalah : '+str(objek))
 #cv2.imshow("object detection", image)
 #cv2.waitKey()
     
-cv2.imwrite("crot-result.jpg", image)
+cv2.imwrite("outputs/crot-result.jpg", image)
 cv2.destroyAllWindows()
 
 
