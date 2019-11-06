@@ -9,7 +9,7 @@ import cv2
 import numpy as np
 
 
-fimage="FZIl1.jpg"
+fimage="park1.jpg"
 config="yolov3.cfg"
 weights="yolov3.weights"
 cvclasses="yolov3.txt"
@@ -93,7 +93,7 @@ print('Jumlah Objek Adalah : '+str(objek))
 #cv2.imshow("object detection", image)
 #cv2.waitKey()
     
-cv2.imwrite("object-detection.jpg", image)
+cv2.imwrite("crot-result.jpg", image)
 cv2.destroyAllWindows()
 
 
